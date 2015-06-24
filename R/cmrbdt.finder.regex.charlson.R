@@ -80,8 +80,12 @@ cmrbdt.finder.regex.charlson_Quan2005 <-
 
     charlsons_v2$SE <- charlsons_v2$US
 
-    # MI - no change
-
+    # MI
+    charlsons_v1$SE$MI$icd8 <- c('^410', '^412(01|91)')
+    
+    # CHF
+    charlson_v2$SE$CHF$icd8 <- c('^39899','^40299','^40499','^425','^428.99')
+    
     charlsons_v2$SE$CHF$icd9 <-
       c(# Not with heart failure in Swedish system
         #'^3989',
@@ -89,47 +93,79 @@ cmrbdt.finder.regex.charlson_Quan2005 <-
         # '^404(01|03|[19][13])',
         '^42(5[456789]|8)')
 
-    # PVD - no change
-
+    # PVD   
+    charlsons_v2$SE$PVD$icd8 <- c('^93','^44[013]','^437')
+        
+    # CVD
+    charlsons_v2$SE$CVD$icd8 <- c('^3770[23]','^43[0-8])')
+    
     charlsons_v2$SE$CVD$icd9 <-
       c('^36234', '^43[012345678]')
 
+    # DEMENTIA
+    charlsons_v2$SE$DEMENTIA$icd8 <- c('^290')
+    
     charlsons_v2$SE$DEMENTIA$icd9 <-
       c('^29(0|41)', '^3312')
+    # check w/ LB: (^290)|(^294B)|(^331C)
 
-    # DEM - no change
-
+    # COPD
+    charlsons_v2$SE$COPD$icd8 <- c('^49[0-3]','^5060[19]')
+    
     charlsons_v2$SE$COPD$icd9 <-
       c('^416[89]', '^49', '^50([012345]|64|81)')
+    # check w/ LB: '(^416[WX])|(^49[0-9])|(^50[0-5])|(^506E)|(^508[BW])'
 
-    # RHEUM - no change
+    # RHEUM
+    # connective tissue disease (?)
+    charlsons_v2$SE$RHEUM$icd8 <- c('^446.30','^734','^712[1-5]','^716')
 
-    # PUD - no change
+    # PUD
+    charlsons_v2$SE$PUD$icd8 <- c('^53[1-4]')
 
-    # LD - no change
-
-    # DM - no change
-    # DM.COMP - no change
+    # DM
+    charlsons_v2$SE$DM$icd8 <- c('^2500[0-3]','^2500[89]')
+    
+    # DM.COMP
+    charlsons_v2$SE$DM.COMP$icd8 <- c('^2500[4-7]')
 
     # PLEGIA - no change
+    charlsons_v2$SE$PLEGIA$icd8 <- c('^34[34]')
 
+    # MILD.LIVER
+    charlsons_v2$SE$MILD.LIVER$icd8 <- c('^070.0[1-9]','^57[01]','^573.00')
+      
     charlsons_v2$SE$MILD.LIVER$icd9 <-
       c('^070[23456]', '^57([01]|3[3489])', '^V427')
 
+    # RENAL
+    charlsons_v2$SE$RENAL$icd8 <- c('^40[34]99','^58[23]','^Y29301')
+    
     charlsons_v2$SE$RENAL$icd9 <-
       c('^403[019]',
         '^404[019]',
         '^58(2|3[01234567]|[56]|80)', '^V4(20|51)', '^V56')
-
+    
+    # MALIGNANCY
+    # includes both solid tumors and leukemia - check with LB!
+    charlsons_v2$SE$MALIGNANCY$icd8 <- c('^20[0-8]','^1[4-6][0-9]','^17[0-2]','^1[78][4-9]','^19[0-5]')
+    
     charlsons_v2$SE$MALIGNANCY$icd9 <-
       c('^1[456]', '^17[012456789]', '^18',
         '^19[012345]', '^20[012345678]', '^2386')
 
-    # SEVERE.LIVER - no change
-
+    # SEVERE.LIVER
+    charlsons_v2$SE$SEVERE.LIVER$icd8 <- c('^45600','^5730[23]')
+    
+    # METASTASIS
+    charlsons_v2$SE$METASTASIS$icd8 <- '^19[6-9]'
+    
     charlsons_v2$SE$METASTASIS$icd9 <-
       c('^19([6789])')
 
+    # HIV
+    charlsons_v2$SE$HIV$icd8 <- 'not available in ICD8'
+    
     charlsons_v2$SE$HIV$icd9 <-
       c('279K')
 
@@ -327,3 +363,6 @@ cmrbdt.finder.regex.charlson_Sundarajan2004 <-
       return(out)
     }
   })
+
+
+  SCORE <- c(1,1,1,1,1,1,1,1,1,2,2,2,2,2,6,1,3,6)
