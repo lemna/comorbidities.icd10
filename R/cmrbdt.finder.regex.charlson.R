@@ -176,7 +176,7 @@ cmrbdt.finder.regex.charlson_Quan2005 <-
 
     function(icd_codes,
              out,
-             country_code,
+             country_code = 'US',
              include_acute = rep(TRUE, times=length(icd_codes)),
              icd_ver = rep(FALSE, times=length(icd_codes))){
 
@@ -335,7 +335,7 @@ cmrbdt.finder.regex.charlson_Sundarajan2004 <-
 
     function(icd_codes,
              out,
-             country_code,
+             country_code = 'US',
              include_acute = rep(TRUE, times=length(icd_codes)),
              icd_ver = rep(FALSE, times=length(icd_codes))){
 
