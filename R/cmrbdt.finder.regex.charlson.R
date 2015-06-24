@@ -81,10 +81,10 @@ cmrbdt.finder.regex.charlson_Quan2005 <-
     charlsons_v2$SE <- charlsons_v2$US
 
     # MI
-    charlsons_v1$SE$MI$icd8 <- c('^410', '^412(01|91)')
+    charlsons_v2$SE$MI$icd8 <- c('^410', '^412(01|91)')
     
     # CHF
-    charlson_v2$SE$CHF$icd8 <- c('^39899','^40299','^40499','^425','^428.99')
+    charlsons_v2$SE$CHF$icd8 <- c('^39899','^40299','^40499','^425','^428.99')
     
     charlsons_v2$SE$CHF$icd9 <-
       c(# Not with heart failure in Swedish system
