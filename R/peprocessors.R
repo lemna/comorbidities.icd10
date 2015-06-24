@@ -148,7 +148,7 @@ preproc.code.splitter <- function(icd, icd_ver,
                                   trim = TRUE){
   if (trim){ icd <- str_trim(icd) }
   # Remove empty icd-codes
-  empty <- which(icd != "")
+  empty <- which(icd == "")
   if (length(empty) > 0)
     icd <- icd[-empty]
 
